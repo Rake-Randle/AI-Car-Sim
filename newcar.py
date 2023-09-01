@@ -11,12 +11,31 @@ import os
 import neat
 import pygame
 
+
+#Import the required libraries
+from tkinter import *
+
+#Create an instance of tkinter frame
+win= Tk()
+
+#Set the geometry of frame
+win.geometry("650x250")
+
+#Get the current screen width and height
+screen_width = win.winfo_screenwidth()
+screen_height = win.winfo_screenheight()
+
+#Print the screen size
+print("Screen width:", screen_width)
+print("Screen height:", screen_height)
+
+
 # Constants
 # WIDTH = 1600
 # HEIGHT = 880
 
-WIDTH = 2120
-HEIGHT = 1280
+WIDTH = 4120
+HEIGHT = 2080
 
 CAR_SIZE_X = 50
 CAR_SIZE_Y = 50
@@ -326,8 +345,8 @@ def run_simulation(genomes, config):
     generation_font = pygame.font.SysFont("Arial", 30)
     alive_font = pygame.font.SysFont("Arial", 20)
     mean_font = pygame.font.SysFont("Arial", 20)
-    game_map = pygame.image.load(game_map2).convert()  # Convert Speeds Up A Lot
-    game_map2 = pygame.transform.scale("map2.png", (WIDTH, HEIGHT))
+    #game_map2 = map.resize((WIDTH), (HEIGHT))
+    game_map = pygame.image.load("map5.png").convert()  # Convert Speeds Up A Lot
     
     global current_generation
     current_generation += 1
