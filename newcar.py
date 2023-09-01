@@ -15,8 +15,19 @@ import pygame
 # WIDTH = 1600
 # HEIGHT = 880
 
-WIDTH = 4120
-HEIGHT = 2080
+# importing tkinter module
+from tkinter import *
+from tkinter.ttk import *
+ 
+# creating tkinter window
+root = Tk()
+
+# getting screen's height in pixels
+WIDTH2 = int(root.winfo_screenheight())
+WIDTH = WIDTH2
+# getting screen's width in pixels
+HEIGHT2 = int(root.winfo_screenwidth())
+HEIGHT = HEIGHT2
 
 CAR_SIZE_X = 50
 CAR_SIZE_Y = 50
@@ -309,8 +320,7 @@ def run_simulation(genomes, config):
 
     # Initialize PyGame And The Display
     pygame.init()
-    screen = pygame.display.set_mode((WIDTH, HEIGHT),
-                                     pygame.FULLSCREEN)
+    screen = pygame.display.set_mode((WIDTH, HEIGHT), pygame.FULLSCREEN)
 
     # For All Genomes Passed Create A New Neural Network
     for i, g in genomes:
@@ -326,8 +336,7 @@ def run_simulation(genomes, config):
     generation_font = pygame.font.SysFont("Arial", 30)
     alive_font = pygame.font.SysFont("Arial", 20)
     mean_font = pygame.font.SysFont("Arial", 20)
-    #game_map2 = map.resize((WIDTH), (HEIGHT))
-    game_map = pygame.image.load("map5.png").convert()  # Convert Speeds Up A Lot
+    game_map = pygame.image.load("map2.png").convert()  # Convert Speeds Up A Lot
     
     global current_generation
     current_generation += 1
