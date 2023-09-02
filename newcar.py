@@ -12,22 +12,8 @@ import neat
 import pygame
 
 # Constants
-# WIDTH = 1600
-# HEIGHT = 880
-
-# importing tkinter module
-from tkinter import *
-from tkinter.ttk import *
- 
-# creating tkinter window
-root = Tk()
-
-# getting screen's height in pixels
-WIDTH2 = int(root.winfo_screenheight())
-WIDTH = WIDTH2
-# getting screen's width in pixels
-HEIGHT2 = int(root.winfo_screenwidth())
-HEIGHT = HEIGHT2
+WIDTH = 1600
+HEIGHT = 880
 
 CAR_SIZE_X = 50
 CAR_SIZE_Y = 50
@@ -58,7 +44,7 @@ class Car:
     def __init__(self):
         # Load Car Sprite and Rotate
         self.sprite = pygame.image.load(
-            "car-green.png"
+            "car3.png"
         ).convert()  # Convert Speeds Up A Lot
         self.sprite = pygame.transform.scale(self.sprite, (CAR_SIZE_X, CAR_SIZE_Y))
         self.rotated_sprite = self.sprite
