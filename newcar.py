@@ -12,8 +12,8 @@ import neat
 import pygame
 
 # Constants
-WIDTH = 1600
-HEIGHT = 880
+WIDTH = 1920
+HEIGHT = 1080
 
 CAR_SIZE_X = 50
 CAR_SIZE_Y = 50
@@ -50,7 +50,7 @@ class Car:
         self.rotated_sprite = self.sprite
 
         # self.position = [690, 740] # Starting Position
-        self.position = [830, 920]  # Starting Position
+        self.position = [830, 930]  # Starting Position
         self.angle = 0
         self.speed = 0
 
@@ -86,7 +86,7 @@ class Car:
         for radar in self.radars:
             position = radar[0]
             pygame.draw.line(screen, (0, 255, 0), self.center, position, 1)
-            pygame.draw.circle(screen, (0, 255, 0), position, 5)
+            pygame.draw.circle(screen, (0, 255, 0), position, 7)
 
     """ 4. This Function:
     
@@ -142,7 +142,7 @@ class Car:
         # Set The Speed To 20 For The First Time
         # Only When Having 4 Output Nodes With Speed Up and Down
         if not self.speed_set:
-            self.speed = 20
+            self.speed = 15
             self.speed_set = True
 
         # Get Rotated Sprite And Move Into The Right X-Direction
@@ -322,7 +322,7 @@ def run_simulation(genomes, config):
     generation_font = pygame.font.SysFont("Arial", 30)
     alive_font = pygame.font.SysFont("Arial", 20)
     mean_font = pygame.font.SysFont("Arial", 20)
-    game_map = pygame.image.load("map2.png").convert()  # Convert Speeds Up A Lot
+    game_map = pygame.image.load("map.png").convert()  # Convert Speeds Up A Lot
     
     global current_generation
     current_generation += 1
