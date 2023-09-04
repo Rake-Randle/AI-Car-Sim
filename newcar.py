@@ -49,7 +49,6 @@ class Car:
         self.sprite = pygame.transform.scale(self.sprite, (CAR_SIZE_X, CAR_SIZE_Y))
         self.rotated_sprite = self.sprite
 
-        # self.position = [690, 740] # Starting Position
         self.position = [830, 930]  # Starting Position
         self.angle = 0
         self.speed = 0
@@ -106,7 +105,7 @@ class Car:
     """
 
     def check_radar(self, degree, game_map):
-        length = 0
+        length = 50
         x = int(
             self.center[0]
             + math.cos(math.radians(360 - (self.angle + degree))) * length
@@ -322,7 +321,7 @@ def run_simulation(genomes, config):
     generation_font = pygame.font.SysFont("Arial", 30)
     alive_font = pygame.font.SysFont("Arial", 20)
     mean_font = pygame.font.SysFont("Arial", 20)
-    game_map = pygame.image.load("map.png").convert()  # Convert Speeds Up A Lot
+    game_map = pygame.image.load("map2.png").convert()  # Convert Speeds Up A Lot
     
     global current_generation
     current_generation += 1
