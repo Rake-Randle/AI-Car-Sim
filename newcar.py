@@ -3,6 +3,8 @@
 # This code has again been hoisted by the CGS Digital Innovation Department
 # giving credit to the above authors for the benfit of our education in ML
 
+#GLOBAL VARIABLE
+
 import math
 import random
 import sys
@@ -35,15 +37,16 @@ why it is necessary and where it is being used in the rest of the program.
 
 class Car:
     """1. This Function:
-    This function is the class constructor. This is a special function which is called upon when an
-    object of the car class is instantiated. Attributes of the car class are defined here.
-    Notably, alive, distance, time, radars and position
-
+    This Function defines the "self" which is the car's properties and values. This function defines properties such as, how the car looks (png file), 
+    scales the car so it fits with the pygame window, rotates the image. That just defines how it looks, but this function also defines it's,
+    starting position, the angle of which it faces, the starting speed (Later modified in other functions), calculates the center of the sprite,
+    creates all the radars and sensors to be drawn. The function also defines the car as crashed when it starts so it resets the map for the begining.
+    This function is very significant for the start and the some of the global variables that will be used throughout the code.
     """
 
     def __init__(self):
         # Load Car Sprite and Rotate
-        self.sprite = pygame.image.load(
+        self.sprite = pygame.image.load( 
             "car3.png"
         ).convert()  # Convert Speeds Up A Lot
         self.sprite = pygame.transform.scale(self.sprite, (CAR_SIZE_X, CAR_SIZE_Y))
@@ -69,7 +72,8 @@ class Car:
         self.time = 0  # Time Passed
 
     """ 2. This Function:
-    
+        has two parameters, self and screen (later defined) which is then used to draw and add the car and the sensor
+        onto the screen so it is visual for everyone to see. The '.blit' in this function draws the car from the last function.
     """
 
     def draw(self, screen):
@@ -77,18 +81,23 @@ class Car:
         self.draw_radar(screen)  # OPTIONAL FOR SENSORS
 
     """ 3. This Function:
-    
+        Is used to draw all the sensor and radars onto the pygame window. Within in the for loop, it draws the lines
+        and the circle points for the cars sensors, this helps visualise the radar and sensor in the simulation. 
+        In this function you can define the colour and the thickness of the radars.  
     """
 
     def draw_radar(self, screen):
         # Optionally Draw All Sensors / Radars
         for radar in self.radars:
             position = radar[0]
-            pygame.draw.line(screen, (0, 255, 0), self.center, position, 1)
-            pygame.draw.circle(screen, (0, 255, 0), position, 7)
+            pygame.draw.line(screen, (44,111,187), self.center, position, 2)
+            pygame.draw.circle(screen, (44,111,187), position, 7)
 
     """ 4. This Function:
-    
+        This function checks if the car sprite has collided with any wall and if it does it will kill the sprite. 
+        It first defines the car as being alive and then has a for loop to continue to check if the radius and the border of the car has hit a border
+        The different points create a rectangle/ square around the csr, and then checks if it has hit the border colour, which is white.
+        If the square/ rectangle hits the border colour it will kill the car and break the function.
     """
 
     def check_collision(self, game_map):
