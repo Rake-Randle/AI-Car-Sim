@@ -49,8 +49,8 @@ class Car:
         self.sprite = pygame.transform.scale(self.sprite, (CAR_SIZE_X, CAR_SIZE_Y))
         self.rotated_sprite = self.sprite
 
-        self.position = [830, 930]  # Starting Position
-        self.angle = 0
+        self.position = [1725, 840]  # Starting Position
+        self.angle = 90 # Starting Angle
         self.speed = 0
 
         self.speed_set = False  # Flag For Default Speed Later on
@@ -320,8 +320,8 @@ def run_simulation(genomes, config):
     clock = pygame.time.Clock()
     generation_font = pygame.font.SysFont("Arial", 30)
     alive_font = pygame.font.SysFont("Arial", 20)
-    mean_font = pygame.font.SysFont("Arial", 20)
-    game_map = pygame.image.load("map2.png").convert()  # Convert Speeds Up A Lot
+    title_font = pygame.font.SysFont("Arial", 35)
+    game_map = pygame.image.load("map.png").convert()  # Convert Speeds Up A Lot
     
     global current_generation
     current_generation += 1
@@ -378,25 +378,28 @@ def run_simulation(genomes, config):
                 car.draw(screen)
 
         # Display Info
+        text = title_font.render("Mt Panorama, AI-Car-Simulator", True, (0, 0, 0))
+        text_rect = text.get_rect()
+        text_rect.center = (590, 255)
+        screen.blit(text, text_rect)
+
         text = generation_font.render(
             "Generation: " + str(current_generation), True, (0, 0, 0)
         )
         text_rect = text.get_rect()
-        text_rect.center = (900, 450)
+        text_rect.center = (590, 285)
         screen.blit(text, text_rect)
 
         text = alive_font.render("Still Alive: " + str(still_alive), True, (0, 0, 0))
         text_rect = text.get_rect()
-        text_rect.center = (900, 490)
+        text_rect.center = (590, 315)
         screen.blit(text, text_rect)
 
-        text = mean_font.render(
-            "Mean Fitness: " + str(neat.StatisticsReporter().get_fitness_mean()),
-            True,
-            (0, 0, 0),
+        text = alive_font.render(
+            "Time: " + str(round(counter/60)), True, (0, 0, 0)
         )
         text_rect = text.get_rect()
-        text_rect.center = (900, 530)
+        text_rect.center = (590, 345)
         screen.blit(text, text_rect)
 
         pygame.display.flip()
