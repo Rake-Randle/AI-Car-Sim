@@ -96,7 +96,7 @@ class Car:
     """ 4. This Function:
         This function checks if the car sprite has collided with any wall and if it does it will kill the sprite. 
         It first defines the car as being alive and then has a for loop to continue to check if the radius and the border of the car has hit a border
-        The different points create a rectangle/ square around the csr, and then checks if it has hit the border colour, which is white.
+        The different points create a rectangle/ square around the car, and then checks if it has hit the border colour, which is white.
         If the square/ rectangle hits the border colour it will kill the car and break the function.
     """
 
@@ -110,7 +110,11 @@ class Car:
                 break
 
     """ 5. This Function:
-    
+        This function is essential for the learning of the car. The function calculates the distance from the cars
+        to the obstacles in specific directions. These measurments are then pushed to the radar readings which 
+        allow the car to load. The function also checks while the radars aren't hitting the border then it extends
+        the radars to its max length. All the calculations of distances are then pushed towards an array for data
+        usage in the future which enables the car to learn for future generations. 
     """
 
     def check_radar(self, degree, game_map):
@@ -125,7 +129,7 @@ class Car:
         )
 
         # While We Don't Hit BORDER_COLOR AND length < 300 (just a max) -> go further and further
-        while not game_map.get_at((x, y)) == BORDER_COLOR and length < 300:
+        while not game_map.get_at((x, y)) == BORDER_COLOR and length < 350:
             length = length + 1
             x = int(
                 self.center[0]
@@ -150,7 +154,7 @@ class Car:
         # Set The Speed To 20 For The First Time
         # Only When Having 4 Output Nodes With Speed Up and Down
         if not self.speed_set:
-            self.speed = 15
+            self.speed = 20
             self.speed_set = True
 
         # Get Rotated Sprite And Move Into The Right X-Direction
@@ -387,25 +391,25 @@ def run_simulation(genomes, config):
                 car.draw(screen)
 
         # Display Info
-        text = title_font.render("Mt Panorama, AI-Car-Simulator", True, (0, 0, 0))
+        text = title_font.render("Mt Panorama", True, (227,91,137))
         text_rect = text.get_rect()
         text_rect.center = (590, 255)
         screen.blit(text, text_rect)
 
         text = generation_font.render(
-            "Generation: " + str(current_generation), True, (0, 0, 0)
+            "Generation: " + str(current_generation), True, (227,91,137)
         )
         text_rect = text.get_rect()
         text_rect.center = (590, 285)
         screen.blit(text, text_rect)
 
-        text = alive_font.render("Still Alive: " + str(still_alive), True, (0, 0, 0))
+        text = alive_font.render("Still Alive: " + str(still_alive), True, (227,91,137))
         text_rect = text.get_rect()
         text_rect.center = (590, 315)
         screen.blit(text, text_rect)
 
         text = alive_font.render(
-            "Time: " + str(round(counter/60)), True, (0, 0, 0)
+            "Time: " + str(round(counter/60)), True, (227,91,137)
         )
         text_rect = text.get_rect()
         text_rect.center = (590, 345)
