@@ -147,7 +147,25 @@ class Car:
         self.radars.append([(x, y), dist])
 
     """ 6. This Function:
-    
+        Updates the car's position, angle, and radar based off of its current actions/ state. 
+
+        The 'if not self.speed_set:' condition sets the car's inital speed to 20 if the 
+        'self.speed_set' is set to false, and then it is set to true so that the speed won't go back to the starting speed.
+
+        This fucntion also rotates the sprite to match the starting angle. It also calulates (using trigonometry) to change the 
+        X and Y positions so it doesn't crash at the start, this also gives the cars room by calculating the width. 
+        The same process of calculations using trigonometry is used in both the X and Y axis for better performance.
+
+        The function increases the distance and the time of the cars so it can track the perfoamce of the cars
+        which acts as the rewards and fitness for the machine learning aspect of the code. 
+
+        The below code calculates the new centre of the car by calculating the half the width and height of the car.
+        
+        The function calculates the bounding box around the car based on the car's angle, dimensions, and centre. 
+        These points create the cars collision points. 
+
+        The function continuously checks if the car has collided with any border based off the car's postion.
+        It also continuosly picks up data off the radars which are placed every 45 degrees to gather the different obstacles. 
     """
 
     def update(self, game_map):
@@ -209,7 +227,7 @@ class Car:
             self.check_radar(d, game_map)
 
     """ 7. This Function:
-    
+        This function gets the data off the radars which calculates the distance between the car and the border. 
     """
 
     def get_data(self):
