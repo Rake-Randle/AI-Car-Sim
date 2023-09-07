@@ -227,7 +227,11 @@ class Car:
             self.check_radar(d, game_map)
 
     """ 7. This Function:
-        This function gets the data off the radars which calculates the distance between the car and the border. 
+        This function gets the data off the radars which calculates the distance between the car and the border which is then able to be put
+        into a neural network for further machine learning.  
+        It first gathers the radar datas and stores it in a variable, and creates another variable for the returning values to be put in to.
+        The for loop repeats how ever many times until all radars have been accounted for and it gathers each value and divides it by 30 as an integer
+        which is then finally stored in the return_values and is returned. 
     """
 
     def get_data(self):
@@ -240,7 +244,8 @@ class Car:
         return return_values
 
     """ 8. This Function:
-    
+        This function is very simple but is essential in the functioning of the code. The function checks if the car is still alive and then returns
+        that the car is alive. This will keep the car running throughout the track as long as the car is alive. 
     """
 
     def is_alive(self):
@@ -248,7 +253,9 @@ class Car:
         return self.alive
 
     """ 9. This Function:
-    
+        This function calculates the reward of the car by calculating the distance travelled by the car. This is calculated by the distance of the car
+        divided by 2 as the it starts from the centre point of the car to the top of the car. 
+        This is important as then the AI knows how well it is doing and how to know when it improves. 
     """
 
     def get_reward(self):
@@ -257,7 +264,10 @@ class Car:
         return self.distance / (CAR_SIZE_X / 2)
 
     """ 10. This Function:
-    
+        The code below is used to rotate the image around its centre and transforming it. 
+        The function creates a rectangle and sets it to the size of image. The orginal image is then rotated by the angle.
+        The rectangle is then copied so it can have defined dimensions and positions. 
+        The rotated rectangle is then copied to match the angle of the rotated image and then dinally it is put to the rotated image variable and is returned.
     """
 
     def rotate_center(self, image, angle):
