@@ -8,9 +8,9 @@ reset_on_extinction   = True
 # node activation options
 # CHANGING THE ACTIVATION FUNCTION IN THE CONFIG FILE. 
 # SPECIFICALLY CHANGING THE activation_default AND activation_options to the independant variables
-activation_default      = softplus 
+activation_default      = sin 
 activation_mutate_rate  = 0.01
-activation_options      = softplus 
+activation_options      = sin 
 
 # node aggregation options
 aggregation_default     = sum

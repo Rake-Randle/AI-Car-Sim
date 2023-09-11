@@ -281,7 +281,10 @@ class Car:
 
 
 """ This Function:
-
+    There are many parts to this function but the general view of the function is to set up all the vairables 
+    and display the entire simulation while managng between the different genomes, neural networks, cars and the game enviroment.
+    The simulation also controls the game loop, updates the car positions, track fitness, and gives visual 
+    feedback of the simulation and how well it is doing in the simulation.  
 """
 
 
