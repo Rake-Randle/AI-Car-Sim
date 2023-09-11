@@ -27,7 +27,7 @@ current_generation = 0  # Generation counter
 The Car Class 
 
 Throughout this section, you will need to explore each function
-and provide extenive comments in the spaces denoted by the 
+and provide extensive comments in the spaces denoted by the 
 triple quotes(block quotes) """ """.
 Your comments should describe each function and what it is doing, 
 why it is necessary and where it is being used in the rest of the program.
@@ -38,10 +38,10 @@ why it is necessary and where it is being used in the rest of the program.
 class Car:
     """1. This Function:
     This Function defines the "self" which is the car's properties and values. This function defines properties such as, how the car looks (png file), 
-    scales the car so it fits with the pygame window, rotates the image. That just defines how it looks, but this function also defines it's,
+    scales the car so it fits with the pygame window, and rotates the image. That just defines how it looks, but this function also defines it's,
     starting position, the angle of which it faces, the starting speed (Later modified in other functions), calculates the center of the sprite,
-    creates all the radars and sensors to be drawn. The function also defines the car as crashed when it starts so it resets the map for the begining.
-    This function is very significant for the start and the some of the global variables that will be used throughout the code.
+    and creates all the radars and sensors to be drawn. The function also defines the car as crashed when it starts so it resets the map for the begining.
+    This function is very significant for the start and some of the global variables that will be used throughout the code.
     """
 
     def __init__(self):
@@ -72,7 +72,7 @@ class Car:
         self.time = 0  # Time Passed
 
     """ 2. This Function:
-        has two parameters, self and screen (later defined) which is then used to draw and add the car and the sensor
+        has two parameters, self and screen (later defined) which are then used to draw and add the car and the sensor
         onto the screen so it is visual for everyone to see. The '.blit' in this function draws the car from the last function.
     """
 
@@ -81,9 +81,9 @@ class Car:
         self.draw_radar(screen)  # OPTIONAL FOR SENSORS
 
     """ 3. This Function:
-        Is used to draw all the sensor and radars onto the pygame window. Within in the for loop, it draws the lines
-        and the circle points for the cars sensors, this helps visualise the radar and sensor in the simulation. 
-        In this function you can define the colour and the thickness of the radars.  
+        Is used to draw all the sensors and radars onto the pygame window. Within the for loop, it draws the lines
+        and the circle points for the car's sensors, this helps visualise the radar and sensor in the simulation. 
+        In this function, you can define the colour and the thickness of the radars.  
     """
 
     def draw_radar(self, screen):
@@ -111,9 +111,9 @@ class Car:
 
     """ 5. This Function:
         This function is essential for the learning of the car. The function calculates the distance from the cars
-        to the obstacles in specific directions. These measurments are then pushed to the radar readings which 
+        to the obstacles in specific directions. These measurements are then pushed to the radar readings which 
         allow the car to load. The function also checks while the radars aren't hitting the border then it extends
-        the radars to its max length. All the calculations of distances are then pushed towards an array for data
+        the radars to their max length. All the calculations of distances are then pushed towards an array for data
         usage in the future which enables the car to learn for future generations. 
     """
 
@@ -147,25 +147,25 @@ class Car:
         self.radars.append([(x, y), dist])
 
     """ 6. This Function:
-        Updates the car's position, angle, and radar based off of its current actions/ state. 
+        Updates the car's position, angle, and radar off on its current actions/ state. 
 
-        The 'if not self.speed_set:' condition sets the car's inital speed to 20 if the 
+        The 'if not self.speed_set:' condition sets the car's initial speed to 20 if the 
         'self.speed_set' is set to false, and then it is set to true so that the speed won't go back to the starting speed.
 
-        This fucntion also rotates the sprite to match the starting angle. It also calulates (using trigonometry) to change the 
+        This function also rotates the sprite to match the starting angle. It also calculates (using trigonometry) to change the 
         X and Y positions so it doesn't crash at the start, this also gives the cars room by calculating the width. 
-        The same process of calculations using trigonometry is used in both the X and Y axis for better performance.
+        The same process of calculations using trigonometry is used in both the X and Y axes for better performance.
 
-        The function increases the distance and the time of the cars so it can track the perfoamce of the cars
-        which acts as the rewards and fitness for the machine learning aspect of the code. 
+        The function increases the distance and the time of the cars so it can track the performance of the cars
+        which acts as the reward and fitness for the machine learning aspect of the code. 
 
-        The below code calculates the new centre of the car by calculating the half the width and height of the car.
+        The below code calculates the new centre of the car by calculating half the width and height of the car.
         
         The function calculates the bounding box around the car based on the car's angle, dimensions, and centre. 
-        These points create the cars collision points. 
+        These points create the car's collision points. 
 
-        The function continuously checks if the car has collided with any border based off the car's postion.
-        It also continuosly picks up data off the radars which are placed every 45 degrees to gather the different obstacles. 
+        The function continuously checks if the car has collided with any border based on the car's position.
+        It also continuously picks up data off the radars which are placed every 45 degrees to gather the different obstacles. 
     """
 
     def update(self, game_map):
@@ -229,8 +229,8 @@ class Car:
     """ 7. This Function:
         This function gets the data off the radars which calculates the distance between the car and the border which is then able to be put
         into a neural network for further machine learning.  
-        It first gathers the radar datas and stores it in a variable, and creates another variable for the returning values to be put in to.
-        The for loop repeats how ever many times until all radars have been accounted for and it gathers each value and divides it by 30 as an integer
+        It first gathers the radar data stores it in a variable, and creates another variable for the returning values to be put into.
+        The for loop repeats however many times until all radars have been accounted for and it gathers each value and divides it by 30 as an integer
         which is then finally stored in the return_values and is returned. 
     """
 
@@ -254,7 +254,7 @@ class Car:
 
     """ 9. This Function:
         This function calculates the reward of the car by calculating the distance travelled by the car. This is calculated by the distance of the car
-        divided by 2 as the it starts from the centre point of the car to the top of the car. 
+        divided by 2 as it starts from the centre point of the car to the top of the car. 
         This is important as then the AI knows how well it is doing and how to know when it improves. 
     """
 
@@ -264,10 +264,10 @@ class Car:
         return self.distance / (CAR_SIZE_X / 2)
 
     """ 10. This Function:
-        The code below is used to rotate the image around its centre and transforming it. 
-        The function creates a rectangle and sets it to the size of image. The orginal image is then rotated by the angle.
+        The code below is used to rotate the image around its centre and transform it. 
+        The function creates a rectangle and sets it to the size of the image. The original image is then rotated by the angle.
         The rectangle is then copied so it can have defined dimensions and positions. 
-        The rotated rectangle is then copied to match the angle of the rotated image and then dinally it is put to the rotated image variable and is returned.
+        The rotated rectangle is then copied to match the angle of the rotated image and then finally it is put to the rotated image variable and is returned.
     """
 
     def rotate_center(self, image, angle):
@@ -285,6 +285,7 @@ class Car:
     and display the entire simulation while managng between the different genomes, neural networks, cars and the game enviroment.
     The simulation also controls the game loop, updates the car positions, track fitness, and gives visual 
     feedback of the simulation and how well it is doing in the simulation.  
+    
 """
 
 
