@@ -1,7 +1,7 @@
 """
 2-input XOR example -- this is most likely the simplest possible example.
 """
-
+ 
 import os
 
 import neat

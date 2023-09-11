@@ -48,7 +48,7 @@ You can exit the game by typing:
 New Mod: You can now exit by hitting the esc key
 
 >esc
-
+ 
 You can shrink the window to see the stats by typing:
 >alt-tab
 
