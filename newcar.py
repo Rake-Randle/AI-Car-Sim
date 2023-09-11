@@ -286,6 +286,32 @@ class Car:
     The simulation also controls the game loop, updates the car positions, track fitness, and gives visual 
     feedback of the simulation and how well it is doing in the simulation.  
     
+    The first lines of code in the function is creating two empty lists, 'nets' and 'cars'. 
+    The 'nets' list is used to store neural networks created from the genomes and the 'cars' list holds instances of the 'Car' class.
+
+    The intialisation of Pygame before the game loop is initialised by 'pygame.init()', and then it sets the display for the game 
+    with the WIDTH and HEIGHT variables with it then being displayed in fullscreen. 
+
+    The for loop initialises a new neural network for each genome provided using the 'net = neat...'. 
+    This is then added to the 'nets' list defined at the start of the function.
+    The fitness of each genome is set to 0 and the corresponding 'Car' instance is appeneded to the 'cars' list. 
+    This allows for the neural networking to begin.
+
+    There are some pygame functions which allow for more visual and better functionalities of the game such as the in game clock 
+    and all the font/ text customisations. This also includes the convertion of the game map which is displayed. 
+
+    The game loop continues to re-iterate through until there are no cars left or the clock gets to around 20 seconds.
+    The game may finish if the user decides to hit the escape button on their keyboard as a may to quickly exit the loop. 
+
+    Within the game loop each car performs:
+    - An output is obtained by activating the network with sensor data and a decision to move
+    - The code checks if the car is still alive and if it is the 'update' method is called to move the cars position and check for collisions
+    - The fitness of the genome is incremented based off of the performance and progress of each individual car
+    Also within the loop it displays all the text and information onto the screen and draws the map as well, this is done with the code, 'screen.blit()'.
+    This ensures that the simulation is being displayed and updated at all times. 
+
+    The function also controls the FPS rate with the code, 'clock.tick(60)' which enables the simulation to run at 60 frames a second.
+    This maintains a consistant speed for the simulation while also making it more predictable and playable. 
 """
 
 
@@ -398,7 +424,23 @@ def run_simulation(genomes, config):
 
 
 """ 1. This Section:     
-    
+    The last section of code sets up the NEAT configuration, creates a population of neural networds, 
+    adds reporters for tracking and runs the simulation for a specified amount of times. 
+    The NEAT will evolve neural networks to improve the cars control during the simulation and increase their performance. 
+
+    The code loads the configuration settings for the NEAT algorithm. 
+    It specifies the path to the file which contains information on how NEAT should operate. These settings include population size and genetic algorithms.
+
+    After loading the config file a NEAT population is created using a constructor. 
+    The population represents a group of neural networks that undergo the evolution of how to control the cars in the simulation.
+
+    The reporters are then added into the file as they provide information and statistics about the evolution process. 
+    The 'neat.StdOutReporter(True)' reporter outputs information into the console about each generation's progress.
+    The 'neat.StatisticsReporter()' collects statistics on the performance. 
+
+    The section then runs the code for a maximum of 1000 generations declared by this line, 'population.run(run_simulation, 1000)'
+    this allows for the code to not run on for an infinite amount of time but stops at the 1000 generation.
+    This helps maintain lag and keeps the performance rate high. 
 """
 if __name__ == "__main__":
     # Load Config
