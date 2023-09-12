@@ -4,6 +4,9 @@
 
 ![car-sim](assets/ai-sim.png)
 
+## Find the document linked below:
+https://docs.google.com/document/d/1WPONKNdFa0MUkuPnl2N3_MbES7463bSeRW5YI1Nk-vU/edit?usp=sharing 
+
 ### All necessary files for this task can be found linked to this document
 
 Run the code via your favourite IDE. I use VSCode which you can find here: https://code.visualstudio.com/download Don’t worry it is free! Be sure to get the version for your operating system. Install it.
